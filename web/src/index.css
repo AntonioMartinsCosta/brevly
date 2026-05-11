@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-gray-100 font-sans text-gray-600 antialiased;
+  }
+
+  /* Reset spinner do input number */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  /* Container do floating label */
+  .field {
+    @apply relative flex w-full flex-col gap-1.5;
+  }
+
+  .field-label {
+    @apply text-body-xs uppercase tracking-wide text-gray-500
+           transition-colors duration-150;
+  }
+
+  .field-input {
+    @apply h-12 w-full rounded-lg border border-gray-300 bg-white
+           px-4 text-body-md text-gray-600 outline-none
+           transition-colors duration-150
+           placeholder:text-gray-400
+           focus:border-blue-base
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .field-input--error {
+    @apply border-danger;
+  }
+
+  .field-error {
+    @apply flex items-center gap-1 text-body-sm text-danger;
+  }
+
+  .btn-primary {
+    @apply flex h-12 w-full items-center justify-center gap-2
+           rounded-lg bg-blue-base px-4 text-md text-white
+           transition-colors duration-150
+           hover:bg-blue-dark
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-secondary {
+    @apply flex items-center justify-center gap-1.5
+           rounded-md border border-gray-200 bg-gray-200
+           px-3 py-2 text-sm text-gray-500
+           transition-colors duration-150
+           hover:border-blue-base hover:text-blue-base
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .icon-btn {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded
+           border border-gray-200 bg-gray-200 text-gray-500
+           transition-colors duration-150
+           hover:border-blue-base hover:text-blue-base
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .card {
+    @apply rounded-lg bg-white p-6 shadow-card md:p-8;
+  }
+}

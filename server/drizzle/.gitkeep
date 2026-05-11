@@ -1,0 +1,2 @@
+# Esta pasta receberá as migrations geradas por `npm run db:generate`.
+# Não edite os SQLs gerados manualmente.
