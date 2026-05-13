@@ -1,18 +1,11 @@
-<<<<<<< HEAD
-# brevly
-encurtador de link
-=======
 # Brev.ly
 
 Aplicação fullstack para encurtamento de URLs — desafio Rocketseat.
 
 ## Estrutura
-
-```
 .
 ├── server/   # API Fastify + Drizzle + Postgres + Cloudflare R2
 └── web/      # SPA React + Vite + Tailwind
-```
 
 ## Quickstart
 
@@ -32,6 +25,38 @@ cp .env.example .env
 npm install
 npm run dev                 # http://localhost:5173
 ```
+
+## Configuração de Variáveis de Ambiente (.env)
+
+### ⚠️ Segurança
+
+**Nunca commite o arquivo `.env`** — ele contém credenciais privadas. O arquivo está automaticamente ignorado via `.gitignore`.
+
+Use o **`.env.example`** como template. Cada pasta (`server/` e `web/`) tem seu próprio `.env.example`.
+
+### Back-end (`server/.env`)
+
+**Obrigatórias para rodar:**
+PORT=3333
+DATABASE_URL="postgresql://docker:docker@localhost:5432/brevly"
+
+- `PORT` — porta do servidor (padrão: 3333)
+- `DATABASE_URL` — connection string do Postgres (se usou o docker-compose padrão, deixe assim)
+
+**Obrigatórias para exportar CSV (Cloudflare R2):**
+CLOUDFLARE_ACCOUNT_ID="seu_account_id"
+CLOUDFLARE_ACCESS_KEY_ID="sua_access_key"
+CLOUDFLARE_SECRET_ACCESS_KEY="sua_secret_key"
+CLOUDFLARE_BUCKET="seu_bucket_name"
+CLOUDFLARE_PUBLIC_URL="https://pub-xxxxx.r2.dev"
+
+### Front-end (`web/.env`)
+VITE_FRONTEND_URL=http://localhost:5173
+VITE_BACKEND_URL=http://localhost:3333
+- `VITE_FRONTEND_URL` — URL da sua aplicação (para links públicos)
+- `VITE_BACKEND_URL` — URL do servidor Fastify
+
+Se hospedou em produção, ajuste essas URLs para os domínios reais.
 
 ## Funcionalidades
 
@@ -81,4 +106,3 @@ Todas as operações por link (`GET /links/:shortUrl`, `DELETE /links/:shortUrl`
 `PATCH /links/:shortUrl/access`) usam o **`shortUrl`** como identificador, em vez
 do `id` UUID. Isso mantém consistência entre back e front (a SPA já tem o
 shortUrl em mãos via URL params) e fica mais RESTful.
->>>>>>> b396a2e (:tada: Commint Inicial)
